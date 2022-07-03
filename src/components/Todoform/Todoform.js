@@ -60,7 +60,7 @@ return (
           </div>
           <form id='todoform'>
               <span>
-                  <input type='text' value={task} placeholder='Type your task here'
+                  <input type='text' value={task} placeholder='Type your task'
                   onChange={(e) => {setTask(e.target.value)}}
                   />
               </span>
