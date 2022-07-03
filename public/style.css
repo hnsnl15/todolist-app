@@ -157,12 +157,12 @@ button:hover {
 .created-todo .card-btns {
   display: flex;
   position: absolute;
-  right: clamp(10px, 2vw, 12px);
-  gap: 3px;
+  right: clamp(12px, 2.5vw, 18px);
+  gap: 4px;
 }
 .created-todo .card-btns button {
-  width: clamp(36px, 10vw, 60px);
-  padding: 0.8rem;
+  width: clamp(40px, 10vw, 60px);
+  padding: 1rem;
 }
 
 /*# sourceMappingURL=style.css.map */
