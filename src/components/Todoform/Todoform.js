@@ -62,7 +62,7 @@ useEffect(() => {
        </div>
 
        <div className='todolist-container'>
-          <div className='container todolist-title' style={showedCards ? {transform: 'scale(0.9)'} : {transform: 'scale(1)'}}>
+          <div className='container todolist-title' style={showedCards ? {transform: 'scale(0.88)'} : {transform: 'scale(0.96)'}}>
             <h1>Tasks</h1>
             <span onClick={() => {
               setShowedCards(prev => !prev)
