@@ -162,6 +162,7 @@ button:hover {
 }
 .created-todo .card-btns button {
   width: clamp(36px, 10vw, 60px);
+  padding: 0.8rem;
 }
 
 /*# sourceMappingURL=style.css.map */

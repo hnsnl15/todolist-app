@@ -182,7 +182,8 @@ button {
         right: 6px;
         gap: 3px;
         button {
-            width: clamp(36px, 10vw, 60px)
+            width: clamp(36px, 10vw, 60px);
+            padding: 0.8rem;
         }
     }
 }
