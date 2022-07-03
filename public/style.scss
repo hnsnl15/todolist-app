@@ -179,10 +179,10 @@ button {
     .card-btns {
         display: flex;
         position: absolute;
-        right: clamp(12px, 2.5vw, 18px);
+        right: clamp(15px, 2.5vw, 23px);
         gap: 4px;
         button {
-            width: clamp(40px, 10vw, 60px);
+            width: clamp(45px, 10vw, 60px);
             padding: 1rem;
         }
     }

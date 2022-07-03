@@ -46,8 +46,8 @@ useEffect(() => {
 })
 
 const handleDelete = (id) => {
-  const deleteTask = [...taskStorage].filter(task => task.id !== id);
-  setTaskStorage(deleteTask)
+  const updatedTask = [...taskStorage].filter(task => task.id !== id);
+  setTaskStorage(updatedTask)
 }
 
 return (
