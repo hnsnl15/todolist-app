@@ -9,6 +9,7 @@ const data = localStorage.getItem('Tasks');
 const [task, setTask] = useState('');
 const [taskStorage, setTaskStorage] = useState(data ? JSON.parse(data) : []);
 const [showedCards, setShowedCards] = useState(false);
+const [isTaskStorageTrue, setTaskStorageTrue] = useState(false);
 
 const handleSubmit = (e) => {
   e.preventDefault();
@@ -37,6 +38,7 @@ const handleSubmit = (e) => {
   
   setTaskStorage([...taskStorage, taskObject]);
   setTask('');
+  setTaskStorageTrue(true)
 }
 
 
@@ -44,9 +46,8 @@ useEffect(() => {
   localStorage.setItem('Tasks', JSON.stringify(taskStorage));
 })
 
-
-  return (
-    <section className='todoform-container'>
+return (
+  <section className='todoform-container'>
         <div className='mainform-container'>
           <div>
           <h1>Todo</h1>
@@ -61,9 +62,9 @@ useEffect(() => {
           </form>
        </div>
 
-       <div className='todolist-container'>
+       {isTaskStorageTrue && <div className='todolist-container'>
           <div className='container todolist-title' style={showedCards ? {transform: 'scale(0.88)'} : {transform: 'scale(0.96)'}}>
-            <h1>Tasks</h1>
+            <h1>Tasks ({taskStorage.length})</h1>
             <span onClick={() => {
               setShowedCards(prev => !prev)
             }}><AiOutlineDownCircle fontSize='25px'/></span>
@@ -75,7 +76,7 @@ useEffect(() => {
               <Todolist task={task.task_name} date_log={task.date_log}/>
               )
             })}
-       </div>
+       </div>}
     </section>
   )
 }
