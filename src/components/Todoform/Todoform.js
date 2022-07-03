@@ -162,7 +162,7 @@ return (
                   }}
                   >Edit</button>
 
-                  {task.id && (
+                  {editInput && (
                     <button onClick={(e) => {
                       e.preventDefault(); 
                       submitEdit(task.id);
