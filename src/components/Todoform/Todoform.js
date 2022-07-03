@@ -60,6 +60,7 @@ return (
               <span>
                   <input type='text' value={task} placeholder='Type your task'
                   onChange={(e) => {setTask(e.target.value)}}
+                  maxLength='23'
                   />
               </span>
               <button onClick={handleSubmit}>Add</button>
