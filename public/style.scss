@@ -182,8 +182,11 @@ button {
         right: clamp(15px, 2.5vw, 23px);
         gap: 4px;
         button {
-            width: clamp(45px, 10vw, 60px);
+            width: clamp(45px, 10vw, 50px);
             padding: 1rem;
         }
     }
+}
+.taskCompleted-checked {
+    text-decoration: line-through;
 }

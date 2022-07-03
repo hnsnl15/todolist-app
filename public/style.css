@@ -161,8 +161,12 @@ button:hover {
   gap: 4px;
 }
 .created-todo .card-btns button {
-  width: clamp(45px, 10vw, 60px);
+  width: clamp(45px, 10vw, 50px);
   padding: 1rem;
+}
+
+.taskCompleted-checked {
+  text-decoration: line-through;
 }
 
 /*# sourceMappingURL=style.css.map */

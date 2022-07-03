@@ -30,7 +30,7 @@ const handleSubmit = (e) => {
   }
 
   if (taskObject.task_name) {
-    alert('success')
+    console.log('success')
   } else {
     alert('Please enter a note.');
     return;
@@ -48,6 +48,18 @@ useEffect(() => {
 const handleDelete = (id) => {
   const updatedTask = [...taskStorage].filter(task => task.id !== id);
   setTaskStorage(updatedTask)
+}
+
+const toggleTaskCompleted = (id) => {
+  const updatedTask = [...taskStorage].map((task) => {
+    if(task.id === id) {
+      task.completed = !task.completed;
+    }
+
+    return task;
+  })
+
+  setTaskStorage(updatedTask);
 }
 
 return (
@@ -78,13 +90,20 @@ return (
 
           {showedCards && taskStorage.map(task => {
             return (
-              <div className='created-todo'>
+              <div className='created-todo' key={task.id}>
                 <Todolist 
-                  key={task.id} 
                   task={task.task_name} 
                   date_log={task.date_log}
+                  style={task.completed}
                 />
                 <div className='card-btns'>
+                  <input className='checker' type="checkbox" 
+                  style={{marginRight: '12px'}}
+                  onChange={() => {
+                    toggleTaskCompleted(task.id);
+                  }}
+                  checked={task.completed}
+                  />
                   <button onClick={() => {
                     handleDelete(task.id)
                   }}>Delete</button>
@@ -97,6 +116,5 @@ return (
     </section>
   )
 }
-
 
 export default Todoform;
