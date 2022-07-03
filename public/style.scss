@@ -9,6 +9,26 @@ $bg-color: rgb(105, 240, 242);
     padding: 0;
     box-sizing: border-box;
 }
+button {
+    width: clamp(13%, 15%, 20%);
+    font-size: clamp(3px, 75%, 14px);
+    border-radius: 10px;
+    padding: .5rem;
+    display: grid;
+    place-content: center;
+    background-color: $primary-color;
+    color: black;
+    transition: all 300ms ease-in-out;
+    outline: 1.5px solid transparent;
+    border: none;
+
+    &:hover {
+        background-color: $secondary-color;
+        color: $text-color1;
+        outline: 1.5px $primary-color solid;
+    }
+}
+
 .App {
     height: auto;
     width: 100vw;
@@ -80,7 +100,7 @@ $bg-color: rgb(105, 240, 242);
                     padding: .8rem;
                     margin-right: 5%;
                     border-radius: 10px;
-                    font-size: clamp(10px, 15px, 20px);
+                    font-size: clamp(90%, 100%, 16px);
                     font-family: inherit;
                     transition: all 300ms ease-in-out;
                     border: none;
@@ -94,26 +114,6 @@ $bg-color: rgb(105, 240, 242);
                 }
 
             }
-
-            button {
-                width: clamp(13%, 15%, 20%);
-                font-size: clamp(85%, 5vw, 10px);
-                border-radius: 10px;
-                padding: .5rem;
-                display: grid;
-                place-content: center;
-                background-color: $primary-color;
-                color: black;
-                transition: all 300ms ease-in-out;
-                outline: 1.5px solid transparent;
-                border: none;
-
-                &:hover {
-                    background-color: $secondary-color;
-                    color: $text-color1;
-                    outline: 1.5px $primary-color solid;
-                }
-            }
         }
     }
 }
@@ -124,6 +124,7 @@ $bg-color: rgb(105, 240, 242);
     max-width: 600px;
     overflow-x: hidden;
     transition: all 300ms ease-in-out;
+    position: relative;
 
     &::-webkit-scrollbar {
         width: 12px; 
@@ -168,6 +169,20 @@ $bg-color: rgb(105, 240, 242);
 
         &:hover {
             box-shadow: 0px 0px 10px 1px;
+        }
+    }
+}
+
+.created-todo {
+    display: grid;
+    place-items: center;
+    .card-btns {
+        display: flex;
+        position: absolute;
+        right: 3px;
+        gap: 4px;
+        button {
+            width: clamp(35px, 10vw, 60px)
         }
     }
 }

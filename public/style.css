@@ -5,6 +5,25 @@
   box-sizing: border-box;
 }
 
+button {
+  width: 15%;
+  font-size: clamp(3px, 75%, 14px);
+  border-radius: 10px;
+  padding: 0.5rem;
+  display: grid;
+  place-content: center;
+  background-color: rgb(0, 255, 238);
+  color: black;
+  transition: all 300ms ease-in-out;
+  outline: 1.5px solid transparent;
+  border: none;
+}
+button:hover {
+  background-color: black;
+  color: white;
+  outline: 1.5px rgb(0, 255, 238) solid;
+}
+
 .App {
   height: auto;
   width: 100vw;
@@ -73,7 +92,7 @@
   padding: 0.8rem;
   margin-right: 5%;
   border-radius: 10px;
-  font-size: 15px;
+  font-size: clamp(90%, 100%, 16px);
   font-family: inherit;
   transition: all 300ms ease-in-out;
   border: none;
@@ -84,30 +103,13 @@
   background: rgb(0, 0, 0);
   color: white;
 }
-.todoform-container .mainform-container form button {
-  width: 15%;
-  font-size: clamp(85%, 5vw, 10px);
-  border-radius: 10px;
-  padding: 0.5rem;
-  display: grid;
-  place-content: center;
-  background-color: rgb(0, 255, 238);
-  color: black;
-  transition: all 300ms ease-in-out;
-  outline: 1.5px solid transparent;
-  border: none;
-}
-.todoform-container .mainform-container form button:hover {
-  background-color: black;
-  color: white;
-  outline: 1.5px rgb(0, 255, 238) solid;
-}
 
 .todolist-container {
   width: 94vw;
   max-width: 600px;
   overflow-x: hidden;
   transition: all 300ms ease-in-out;
+  position: relative;
 }
 .todolist-container::-webkit-scrollbar {
   width: 12px;
@@ -146,6 +148,20 @@
 }
 .todolist-container .todolist-title:hover {
   box-shadow: 0px 0px 10px 1px;
+}
+
+.created-todo {
+  display: grid;
+  place-items: center;
+}
+.created-todo .card-btns {
+  display: flex;
+  position: absolute;
+  right: 3px;
+  gap: 4px;
+}
+.created-todo .card-btns button {
+  width: clamp(35px, 10vw, 60px);
 }
 
 /*# sourceMappingURL=style.css.map */

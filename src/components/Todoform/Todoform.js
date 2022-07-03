@@ -26,7 +26,8 @@ const handleSubmit = (e) => {
   let taskObject = {
     id: uuidv4(),
     task_name: task,
-    date_log: currentDate
+    date_log: currentDate,
+    completed: false
   }
 
   if (taskObject.task_name) {
@@ -46,6 +47,11 @@ useEffect(() => {
   localStorage.setItem('Tasks', JSON.stringify(taskStorage));
 })
 
+const handleDelete = (id) => {
+  const deleteTask = [...taskStorage].filter(task => task.id !== id);
+  setTaskStorage(deleteTask)
+}
+
 return (
   <section className='todoform-container'>
         <div className='mainform-container'>
@@ -62,7 +68,7 @@ return (
           </form>
        </div>
 
-       {isTaskStorageTrue && <div className='todolist-container'>
+       {!isTaskStorageTrue && <div className='todolist-container'>
           <div className='container todolist-title' style={showedCards ? {transform: 'scale(0.88)'} : {transform: 'scale(0.96)'}}>
             <h1>Tasks ({taskStorage.length})</h1>
             <span onClick={() => {
@@ -73,7 +79,19 @@ return (
 
           {showedCards && taskStorage.map(task => {
             return (
-              <Todolist task={task.task_name} date_log={task.date_log}/>
+              <div className='created-todo'>
+                <Todolist 
+                  key={task.id} 
+                  task={task.task_name} 
+                  date_log={task.date_log}
+                />
+                <div className='card-btns'>
+                  <button onClick={() => {
+                    handleDelete(task.id)
+                  }}>Delete</button>
+                  <button>Edit</button>
+                </div>
+              </div>
               )
             })}
        </div>}
