@@ -144,7 +144,7 @@ button:hover {
   transition: all 200ms ease-out;
 }
 .todolist-container .todolist-title span:hover {
-  transform: scale(1.2);
+  animation: scaleWhileHoverRotate 300ms ease-in-out;
 }
 .todolist-container .todolist-title:hover {
   box-shadow: 0px 0px 10px 1px;
@@ -165,8 +165,13 @@ button:hover {
   padding: 1rem;
 }
 
-.taskCompleted-checked {
-  text-decoration: line-through;
+@keyframes scaleWhileHoverRotate {
+  from {
+    transform: rotate(0);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 /*# sourceMappingURL=style.css.map */

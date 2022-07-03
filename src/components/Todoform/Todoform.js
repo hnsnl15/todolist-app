@@ -9,6 +9,8 @@ const data = localStorage.getItem('Tasks');
 const [task, setTask] = useState('');
 const [taskStorage, setTaskStorage] = useState(data ? JSON.parse(data) : []);
 const [showedCards, setShowedCards] = useState(false);
+const [editInput, setEditInput] = useState(false);
+const [edited, setEdited] = useState('');
 
 const handleSubmit = (e) => {
   e.preventDefault();
@@ -62,6 +64,42 @@ const toggleTaskCompleted = (id) => {
   setTaskStorage(updatedTask);
 }
 
+
+const handleEdit = (id) => {
+  const toEdit = [...taskStorage]
+      .filter(task => task.id === id)
+      .map(task => {return task.task_name})
+      
+      setEditInput(prev => !prev);
+      setEdited(toEdit);
+}
+
+const submitEdit = (id) => {
+
+  const d = new Date();
+  let currentDate = d.toLocaleDateString([], {
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+    hour: '2-digit',
+    minute: '2-digit'
+  });
+
+  [...taskStorage]
+    // eslint-disable-next-line array-callback-return
+    .filter(function(task) {
+      if(task.id === id) {
+        task.task_name = edited;
+        task.date_log = currentDate;
+      }
+    });
+    
+    
+    setEditInput(prev => !prev);
+    setEdited('');
+}
+
+
 return (
   <section className='todoform-container'>
         <div className='mainform-container'>
@@ -69,13 +107,25 @@ return (
           <h1>Todo</h1>
           </div>
           <form id='todoform'>
-              <span>
-                  <input type='text' value={task} placeholder='Type your task'
-                  onChange={(e) => {setTask(e.target.value)}}
-                  maxLength='23'
-                  />
-              </span>
-              <button onClick={handleSubmit}>Add</button>
+              {!editInput ? (
+              <>
+                <span>
+                    <input id='add-input' type='text' value={task} placeholder='Type your task'
+                    onChange={(e) => {setTask(e.target.value)}}
+                    maxLength='23'
+                    />
+                </span>
+                <button onClick={handleSubmit}>Add</button>
+              </>) : (
+              <>
+                <span>
+                    <input type='text' value={edited} placeholder='Edit your task'
+                    onChange={(e) => {setEdited(e.target.value)}}
+                    maxLength='23'
+                    />
+                </span>
+              </>)}
+              
           </form>
        </div>
 
@@ -107,7 +157,17 @@ return (
                   <button onClick={() => {
                     handleDelete(task.id)
                   }}>Delete</button>
-                  <button>Edit</button>
+                  <button id={task.id} onClick={() => {
+                    handleEdit(task.id);
+                  }}
+                  >Edit</button>
+
+                  {task.id && (
+                    <button onClick={(e) => {
+                      e.preventDefault(); 
+                      submitEdit(task.id);
+                      }}>Save</button>
+                  )}
                 </div>
               </div>
               )
