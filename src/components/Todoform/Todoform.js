@@ -9,7 +9,6 @@ const data = localStorage.getItem('Tasks');
 const [task, setTask] = useState('');
 const [taskStorage, setTaskStorage] = useState(data ? JSON.parse(data) : []);
 const [showedCards, setShowedCards] = useState(false);
-const [isTaskStorageTrue, setTaskStorageTrue] = useState(false);
 
 const handleSubmit = (e) => {
   e.preventDefault();
@@ -39,7 +38,6 @@ const handleSubmit = (e) => {
   
   setTaskStorage([...taskStorage, taskObject]);
   setTask('');
-  setTaskStorageTrue(true)
 }
 
 
@@ -68,7 +66,7 @@ return (
           </form>
        </div>
 
-       {isTaskStorageTrue && <div className='todolist-container'>
+       {taskStorage.length > 0 && <div className='todolist-container'>
           <div className='container todolist-title' style={showedCards ? {transform: 'scale(0.88)'} : {transform: 'scale(0.96)'}}>
             <h1>Tasks ({taskStorage.length})</h1>
             <span onClick={() => {

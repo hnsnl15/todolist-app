@@ -157,7 +157,7 @@ button:hover {
 .created-todo .card-btns {
   display: flex;
   position: absolute;
-  right: 6px;
+  right: clamp(6px, 2vw, 12px);
   gap: 3px;
 }
 .created-todo .card-btns button {
