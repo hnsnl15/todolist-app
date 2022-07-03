@@ -68,7 +68,7 @@ return (
           </form>
        </div>
 
-       {!isTaskStorageTrue && <div className='todolist-container'>
+       {isTaskStorageTrue && <div className='todolist-container'>
           <div className='container todolist-title' style={showedCards ? {transform: 'scale(0.88)'} : {transform: 'scale(0.96)'}}>
             <h1>Tasks ({taskStorage.length})</h1>
             <span onClick={() => {
